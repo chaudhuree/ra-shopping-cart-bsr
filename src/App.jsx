@@ -83,6 +83,7 @@ function App() {
     totalAmmountToPay
   }
   console.log(priceList)
+  
   return (
     <div className='container'>
       <Header amount={amount} ></Header>
