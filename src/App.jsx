@@ -42,13 +42,25 @@ console.log(`exist:${exist}`) //first time undefined so will go to else part
   //     )
   //   }
   // }
-
+// remove from cart function
+const removeItem = (product) => {
+  const exist = cartItems.find((x) => x.id === product.id);
+  if (exist.qty === 1) { //if quantity is 1 then remove the item
+    setCartItems(cartItems.filter((x) => x.id !== product.id));
+  } else { //if quantity is more than 1 then decrease the quantity
+    setCartItems(
+      cartItems.map((x) =>
+        x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+      )
+    );
+  }
+};
   return (
     <div className='container'>
      <Header></Header>
      <main>
         <CartContainer products={products}  addToCart={addToCart}></CartContainer>
-        <CartBox cartItems={cartItems} addToCart={addToCart}></CartBox>
+        <CartBox cartItems={cartItems} addToCart={addToCart} removeItem={removeItem}></CartBox>
      </main>
     </div>
   )
