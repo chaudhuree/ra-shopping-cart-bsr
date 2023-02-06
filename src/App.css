@@ -18,10 +18,13 @@ p.logo {
 p.cart-item {
   font-size: 14px;
   font-weight: bold;
-  color: salmon;
+  color: rgb(22, 145, 8);
   padding: 9px;
   border-bottom: 2px solid palegreen;
   /* text-transform: uppercase; */
+}
+.cart-item > span {
+  color: salmon;
 }
 main {
   display: grid !important;

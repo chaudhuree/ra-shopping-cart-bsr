@@ -85,10 +85,10 @@ function App() {
   console.log(priceList)
   return (
     <div className='container'>
-      <Header ></Header>
+      <Header amount={amount} ></Header>
       <main>
         <CartContainer products={products} addToCart={addToCart}></CartContainer>
-        <CartBox cartItems={cartItems} addToCart={addToCart} removeItem={removeItem}></CartBox>
+        <CartBox cartItems={cartItems} addToCart={addToCart} removeItem={removeItem} priceList={priceList}></CartBox>
       </main>
     </div>
   )

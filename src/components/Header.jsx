@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Header() {
+function Header({amount}) {
   return (
     <div className='header'>
       <p className='logo'>chaudhuree</p>
-      <p className='cart-item'>cart- <span>0</span></p>
+      <p className='cart-item'>cart- <span>{amount}</span></p>
     </div>
   )
 }
