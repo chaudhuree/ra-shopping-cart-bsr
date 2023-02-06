@@ -87,3 +87,23 @@ main {
   display: block;
   text-align: center;
 }
+.cart-item-box {
+  padding: 18px;
+  /* border: 2px solid red; */
+  margin: 5px;
+}
+.cart-item-box > img {
+  width: 85px;
+}
+.add-btn {
+  background-color: #40c0f0;
+  width: 1.5rem;
+}
+.remove-btn {
+  background-color: #f04040;
+  width: 1.5rem;
+}
+.cart-btn {
+  display: flex;
+  gap: 5px;
+}

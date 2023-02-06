@@ -24,7 +24,7 @@ console.log(`exist:${exist}`) //first time undefined so will go to else part
     }
   };
 
-//add to cart function by only id
+//second approach add to cart function by only id
   // const addToCart=(id)=>{
   //   const exist = cartItems.find((item) => item.id === id);
   //   if (exist) {
@@ -48,7 +48,7 @@ console.log(`exist:${exist}`) //first time undefined so will go to else part
      <Header></Header>
      <main>
         <CartContainer products={products}  addToCart={addToCart}></CartContainer>
-        <CartBox cartItems={cartItems}></CartBox>
+        <CartBox cartItems={cartItems} addToCart={addToCart}></CartBox>
      </main>
     </div>
   )
