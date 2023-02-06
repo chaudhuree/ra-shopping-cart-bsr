@@ -1,5 +1,41 @@
 .container {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+  padding: 0 40px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+p.logo {
+  font-size: 20px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  color: yellowgreen;
+}
+p.cart-item {
+  font-size: 14px;
+  font-weight: bold;
+  color: salmon;
+  padding: 9px;
+  border: 2px solid palegreen;
+  /* text-transform: uppercase; */
+}
+main {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.cart-container {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.cart-box {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
