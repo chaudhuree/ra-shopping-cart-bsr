@@ -1,8 +1,14 @@
 import React from 'react'
+import Product from './Product'
 
-function CartContainer() {
+function CartContainer({products}) {
+  console.log(products)
   return (
-    <div className='cart-container'>CartContainer</div>
+    <div className='cart-container'>
+      {products.map((product) => {
+        return <Product key={product.id} {...product}></Product>
+      })}
+    </div>
   )
 }
 

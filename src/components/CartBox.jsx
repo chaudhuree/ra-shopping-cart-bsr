@@ -1,8 +1,10 @@
 import React from 'react'
 
-function CartBox() {
+function CartBox({cartItems}) {
   return (
-    <div className='cart-box'>CartBox</div>
+    <div className='cart-box'>
+    {cartItems.length === 0 && <div className='empty-box'>Cart is empty</div>}
+    </div>
   )
 }
 
