@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function CartBox({ cartItems, addToCart, removeItem }) {
+
+
   return (
     <div className='cart-box'>
       {cartItems.length === 0 && <div className='empty-box'>Cart is empty</div>}

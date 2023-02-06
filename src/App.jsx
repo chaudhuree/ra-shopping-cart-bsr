@@ -5,14 +5,14 @@ import CartContainer from './components/CartContainer';
 import Header from './components/Header';
 import data from './data';
 function App() {
-  const {products} = data;
+  const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   console.log(cartItems)
 
 
-const addToCart = (product) => {
-const exist = cartItems.find((item) => item.id === product.id);
-console.log(`exist:${exist}`) //first time undefined so will go to else part
+  const addToCart = (product) => {
+    const exist = cartItems.find((item) => item.id === product.id);
+    console.log(`exist:${exist}`) //first time undefined so will go to else part
     if (exist) {
       setCartItems(
         cartItems.map((cartItem) =>
@@ -24,7 +24,7 @@ console.log(`exist:${exist}`) //first time undefined so will go to else part
     }
   };
 
-//second approach add to cart function by only id
+  //second approach add to cart function by only id
   // const addToCart=(id)=>{
   //   const exist = cartItems.find((item) => item.id === id);
   //   if (exist) {
@@ -42,26 +42,54 @@ console.log(`exist:${exist}`) //first time undefined so will go to else part
   //     )
   //   }
   // }
-// remove from cart function
-const removeItem = (product) => {
-  const exist = cartItems.find((x) => x.id === product.id);
-  if (exist.qty === 1) { //if quantity is 1 then remove the item
-    setCartItems(cartItems.filter((x) => x.id !== product.id));
-  } else { //if quantity is more than 1 then decrease the quantity
-    setCartItems(
-      cartItems.map((x) =>
-        x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-      )
-    );
+  // remove from cart function
+  const removeItem = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) { //if quantity is 1 then remove the item
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    } else { //if quantity is more than 1 then decrease the quantity
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
+
+  // total price and other summary information
+  //calculate toal price of the product in the cart and total number of items in the cart
+  let { total, amount } = cartItems.reduce((cartTotal, cartItem) => {
+    const { price, qty } = cartItem;
+    const itemTotal = price * qty;
+    cartTotal.total += itemTotal;
+    cartTotal.amount += qty;
+    return cartTotal;
+  }, {
+    total: 0,
+    amount: 0
+  });
+  total = parseFloat(total.toFixed(2));
+  // console.log(total)
+  //adding 20% tax and 20$ shipping charge(if total price is less than 2000$ shipping charge will be 20$)
+  const taxPrice = total * 0.2; 
+  const shippingPrice = total > 2000 ? 0 : 20;
+  //after adding all in total the whole price is,
+  const totalAmmountToPay = total + taxPrice + shippingPrice;
+  //price list object
+  const priceList={
+    total,
+    shippingPrice,
+    taxPrice,
+    totalAmmountToPay
   }
-};
+  console.log(priceList)
   return (
     <div className='container'>
-     <Header></Header>
-     <main>
-        <CartContainer products={products}  addToCart={addToCart}></CartContainer>
+      <Header ></Header>
+      <main>
+        <CartContainer products={products} addToCart={addToCart}></CartContainer>
         <CartBox cartItems={cartItems} addToCart={addToCart} removeItem={removeItem}></CartBox>
-     </main>
+      </main>
     </div>
   )
 }
